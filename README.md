@@ -1,2 +1,2 @@
 # portfolioBase
-Nodejs + Expressjs+AngularJS+MongoDB
+NodeJS + ExpressJS + AngularJS + MongoDB
