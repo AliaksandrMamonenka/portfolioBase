@@ -1,0 +1,25 @@
+{
+  "name": "portfolioBase",
+  "version": "0.0.1",
+  "authors": [
+    "Aliaksandr Mamonenka <Aliaksandr_Mamonenka@epam.com>"
+  ],
+  "description": "Portfolio collection",
+  "main": "server/app.js",
+  "keywords": [
+    "portfolio"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "angular": "~1.4.4",
+    "angular-resource": "~1.4.4",
+    "angular-route": "~1.4.4",
+    "json3": "~3.3.2",
+    "es5-shim": "~4.1.10",
+    "bootstrap-sass": "~3.3.5",
+    "angular-bootstrap": "~0.13.3"
+  },
+  "install" : {
+    "path" : "client/libs"
+  }
+}
