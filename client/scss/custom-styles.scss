@@ -32,3 +32,11 @@ body {
         margin: 20px 0;
     }
 }
+
+.glyphicon{
+    cursor: pointer;
+    
+    &:hover{    
+         opacity: .8;   
+    }
+}

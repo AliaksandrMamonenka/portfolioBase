@@ -1,1 +1,23 @@
-<p>MyProjectsCtrl</p>
+<div class="table-responsive">
+	<table class="table table-hover">
+		<thead>
+			<tr>
+				<th>Project Name</th>
+				<th>Technologies</th>
+				<th>Tools</th>
+				<th>&nbsp;</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="portfolio in myportfolios.allportfolios">
+				<td>{{portfolio.projectname}}</td>
+				<td>{{portfolio.technologies}}</td>
+				<td>{{portfolio.tools}}</td>
+				<td>
+					<span class="glyphicon glyphicon-trash" ng-click="myportfolios.removePortfolio(portfolio, $index)"></span>
+					<span class="glyphicon glyphicon-pencil" ng-click="homePage.editPortfolio(portfolio)"></span>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>

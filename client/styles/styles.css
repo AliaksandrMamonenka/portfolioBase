@@ -5816,4 +5816,9 @@ body {
   #footer .text-muted {
     margin: 20px 0; }
 
+.glyphicon {
+  cursor: pointer; }
+  .glyphicon:hover {
+    opacity: .8; }
+
 /*# sourceMappingURL=styles.css.map */

@@ -1,1 +1,15 @@
-<p>HomePageCtrl</p>
+<div class="row">
+	<div class="col-md-12" ng-repeat="portfolio in homePage.getAllPortfolios">
+		<div class="panel panel-default">
+			<div class="panel-heading">{{portfolio.projectname}}</div>
+			<div class="panel-body">
+				<div class="col-sm-12 col-md-3" style="text-align:center"><img src="http://fakeimg.pl/150/?text=Image"></div>
+				<div class="col-sm-12 col-md-9">
+					<p>{{portfolio.description}} <a href="#" class="alert-link">read more...</a></p>
+				</div>
+			</div>
+			<div class="panel-footer">Technologies: {{portfolio.technologies}} </div>
+		</div>
+	</div>
+</div>
+	

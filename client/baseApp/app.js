@@ -10,7 +10,15 @@ angular.module('baseApp', [
   'portfolio.module.editProfile',
   'portfolio.module.profail',
   'portfolio.module.logout',
-  'portfolio.resources.api'
+  'portfolio.module.allUsers',
+  // 'portfolio.resources.api',
+  //resource
+  'portfolio.resources.portfolioFactory',
+  'portfolio.resources.userProfileFactory',
+  //service
+  'portfolio.services.portfolioService',
+  'portfolio.services.userProfileService'
+  
   
 ])
 .config(['$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider) {
@@ -28,6 +36,11 @@ angular.module('baseApp', [
   $routeProvider.when('/myprojects', {
     templateUrl: 'baseApp/modules/my-projects-module/my-projects-module.html',
     controller: 'MyProjectsModuleCtrl'
+  });
+  
+   $routeProvider.when('/allusers', {
+    templateUrl: 'baseApp/modules/all-users-module/all-users-module.html',
+    controller: 'allUsersCtrl'
   });
   
   $routeProvider.when('/editprofail', {
@@ -48,6 +61,6 @@ angular.module('baseApp', [
   $routeProvider.otherwise({ redirectTo: '/' });
   
   // this string removed #/ from url 
-  $locationProvider.html5Mode({ enabled: true, requireBase: false });
+  // $locationProvider.html5Mode({ enabled: true, requireBase: false });
 }]);
 

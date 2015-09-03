@@ -1,2 +1,5 @@
 /node_modules
+/.idea
+/.sass-cache
 /client/bower_components
+/ssh-agent.exe.stackdump

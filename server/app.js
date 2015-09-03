@@ -6,7 +6,7 @@ var app = express();
 //native node module for resolving paths
 var path = require('path');
 
-//connect DB
+//connect to DB
 var mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/portfolio');
 
@@ -18,7 +18,6 @@ var methodOverride = require('method-override');
 app.use(methodOverride());
 
 var port = process.env.PORT || 3000;
- 
 
 app.set('view engine', 'jade');
 
@@ -32,36 +31,14 @@ app.get('/', function (req, res) {
    res.render('index', {});
 });
 
-app.get('/usage', function (req, res) {
-   res.render('usage', {});
-});
+//define routing
+var routing = express.Router();
 
-app.get('/signup', function (req, res) {
-   res.render('signup', {});
-});
+require('./routes/userCtrl')(routing);
+require('./routes/portfolioCtrl')(routing);
 
-
-
-// accept POST request on the homepage
-app.post('/', function (req, res) {
-  res.send('Got a POST request');
-});
-
-// accept PUT request at /user
-app.put('/user', function (req, res) {
-  res.send('Got a PUT request at /user');
-});
-
-// accept DELETE request at /user
-app.delete('/user', function (req, res) {
-  res.send('Got a DELETE request at /user');
-});
-
-
-
-var api = express.Router();
-require('./routes/api')(api);
-app.use('/api', api);
+app.use('/userprofile', routing);
+app.use('/portfolio', routing);
 
 app.listen(port, function(){});
 
