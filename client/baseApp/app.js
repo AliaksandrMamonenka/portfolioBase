@@ -11,7 +11,6 @@ angular.module('baseApp', [
   'portfolio.module.profail',
   'portfolio.module.logout',
   'portfolio.module.allUsers',
-  // 'portfolio.resources.api',
   //resource
   'portfolio.resources.portfolioFactory',
   'portfolio.resources.userProfileFactory',
