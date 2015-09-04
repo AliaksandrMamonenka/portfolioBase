@@ -36,10 +36,12 @@ var routing = express.Router();
 
 require('./routes/userCtrl')(routing);
 require('./routes/portfolioCtrl')(routing);
+require('./routes/uploadImagesCtrl')(routing);
 
 app.use('/userprofile', routing);
 app.use('/portfolio', routing);
-
+app.use('/photos', routing);
+//photos/avatar
 app.listen(port, function(){});
 
 console.log("Server is running... PORT: " + port);

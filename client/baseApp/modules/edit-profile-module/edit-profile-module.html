@@ -1,11 +1,18 @@
 <div class="row">
 	<div class="col-md-6">
-		<!-- todo:!!!!!photo field!!!!!-->
+		<div>
+			<form class="well">
+				<input type="file" file-input="files" name="avatar" />
+				<button ng-click="editPrifile.uploadAvatar()">Upload</button>
+				<li ng-repeat="file in files">{{file.name}}</li>
+			</form>
+		</div>
+		<div>
+			<img ng-src="{{editPrifile.avatar}}" alt="Avatar">
+		</div>
+	</div>
+	<div class="col-md-6">
 		<form class="well">
-			<!--<div class="form-group">
-				<label>Photo</label>
-				<input type="file">
-			</div>-->
 			<div class="form-group">
 				<label>First Name</label>
 				<input type="text" class="form-control" ng-model="editPrifile.form.firstname">
@@ -46,29 +53,5 @@
 				<button type="submit" class="btn btn-success" ng-click="editPrifile.addToDB()">Update</button>
 			</div>
 		</form>
-	</div>
-	<div class="col-md-6">
-		<div class="table-responsive">
-			<table class="table table-hover">
-				<thead>
-					<tr>
-						<th>Full Name</th>
-						<th>Phone</th>
-						<th>Address</th>
-						<th>&nbsp;</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr ng-repeat="user in users">
-						<td>{{user.firstname}} {{user.lastname}}</td>
-						<td>{{user.phonenumber}}</td>
-						<td>{{user.address.city}}</td>
-						<td>
-							<span class="glyphicon glyphicon-trash" ng-click="delete($index)"></span>
-						</td>
-					</tr>
-				</tbody>
-			</table>
-		</div>
 	</div>
 </div>

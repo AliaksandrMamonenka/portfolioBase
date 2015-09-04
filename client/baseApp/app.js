@@ -14,9 +14,14 @@ angular.module('baseApp', [
   //resource
   'portfolio.resources.portfolioFactory',
   'portfolio.resources.userProfileFactory',
+  'portfolio.resources.uploadImagesFactory',
   //service
   'portfolio.services.portfolioService',
-  'portfolio.services.userProfileService'
+  'portfolio.services.userProfileService',
+  'portfolio.services.uploadImagesService',
+  //directive
+  'portfolio.directives.fileInput'
+  
   
   
 ])

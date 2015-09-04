@@ -6,7 +6,7 @@ angular.module('portfolio.services.userProfileService', [])
 			getAllProfiles: function () { 
 				
 				userProfileFactory.userProfile.query({}, function (data) {
-					console.log(data);
+					// console.log(data);
 
 					$rootScope.$broadcast('getAllUserProfiles', data);
 				});

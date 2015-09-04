@@ -1,38 +1,19 @@
 'use strict';
 
-angular.module('portfolio.module.editProfile', ['ngRoute'])
-	.controller('EditProfileCtrl', ['$scope', 'userProfileService', function ($scope, userProfileService) {
-		$scope.editPrifile = {};
-		$scope.editPrifile.form = {};
-		$scope.editPrifile.users = [];
-		
-		userProfileService.getAllProfiles();
-		
-		$scope.$on('getAllUserProfiles', function (event, data) {
+angular.module('portfolio.module.editProfile', [])
+    .controller('EditProfileCtrl', ['$scope', '$rootScope', 'uploadImagesService', function ($scope, $rootScope, uploadImagesService) {
+        $scope.editPrifile = {};
+        $scope.editPrifile.form = {};
 
-			$scope.editPrifile.users = data;
-		});
-		
-		$scope.editPrifile.addToDB = function () {
-			api.Customer.save({}, $scope.form, function () {
-				$scope.form = {};
-			});
-		};
-		
-		
-		
-		
-		
-		// // console.log(api.Customer);
-		// api.Customer.query({}, function (data) {
-		// 	$scope.customers = data;
-		// });
+        $scope.editPrifile.uploadAvatar = function () {
+            var formData = new FormData();
+            formData.append('avatar', $scope.files[0]);
 
-		// $scope.delete = function (index) {
-		// 	api.Customer.delete({ id: $scope.customers[index]._id }, function (data) {
-		// 		$scope.customers.splice(index, 1);
-		// 	});
-		// };
+            uploadImagesService.sendAvatar(formData);
+        };
 
-		
-	}]);
+        $rootScope.$on('avatarUploated', function (event, data) {
+            console.log(data);
+            $scope.editPrifile.avatar = data.destination + data.filename + ".jpg";
+        });
+    }]);

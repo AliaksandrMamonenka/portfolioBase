@@ -53,14 +53,15 @@ html(lang='en', ng-app='baseApp')
         p.text-muted.pull-right
           em betta version
     // bower:js
-    script(src='../bower_components/jquery/dist/jquery.js')
     script(src='../bower_components/es5-shim/es5-shim.js')
+    script(src='../bower_components/jquery/dist/jquery.js')
     script(src='../bower_components/angular/angular.js')
+    script(src='../bower_components/angular-bootstrap/ui-bootstrap-tpls.js')
+    script(src='../bower_components/angular-file-upload/dist/angular-file-upload.min.js')
     script(src='../bower_components/angular-resource/angular-resource.js')
     script(src='../bower_components/angular-route/angular-route.js')
-    script(src='../bower_components/json3/lib/json3.js')
     script(src='../bower_components/bootstrap-sass/assets/javascripts/bootstrap.js')
-    script(src='../bower_components/angular-bootstrap/ui-bootstrap-tpls.js')
+    script(src='../bower_components/json3/lib/json3.js')
     // endbower
     script(src='baseApp/app.js')
     // injector:js
@@ -71,9 +72,12 @@ html(lang='en', ng-app='baseApp')
     script(src='baseApp/modules/logout-module/logout-module.js')
     script(src='baseApp/modules/my-projects-module/my-projects-module.js')
     script(src='baseApp/modules/profile-module/profile-module.js')
+    script(src='baseApp/common/directives/file-input-directive.js')
     script(src='baseApp/common/resources/portfolio-factory.js')
+    script(src='baseApp/common/resources/upload-images-factory.js')
     script(src='baseApp/common/resources/user-profile-factory.js')
     script(src='baseApp/common/services/portfolio-service.js')
+    script(src='baseApp/common/services/upload-images-service.js')
     script(src='baseApp/common/services/user-profile-service.js')
     // endinjector
     
