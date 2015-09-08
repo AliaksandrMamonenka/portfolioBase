@@ -6,7 +6,7 @@ module.exports = function (grunt) {
 		//insert js files into Jade
 		wiredep: {
 			target: {
-				src: 'client/views/index.jade' // point to your JADE file.
+				src: 'client/views/layout.jade' // point to your JADE file.
 			}
 		},
 
@@ -47,7 +47,7 @@ module.exports = function (grunt) {
 			},
 			local_dependencies: {
 				files: {
-					'client/views/index.jade': ['client/baseApp/modules/**/*.js', 'client/baseApp/common/**/*.js'],
+					'client/views/layout.jade': ['client/baseApp/modules/**/*.js', 'client/baseApp/common/**/*.js'],
 				}
 			}
 		},

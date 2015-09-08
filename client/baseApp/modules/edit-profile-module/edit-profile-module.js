@@ -14,6 +14,6 @@ angular.module('portfolio.module.editProfile', [])
 
         $rootScope.$on('avatarUploated', function (event, data) {
             console.log(data);
-            $scope.editPrifile.avatar = data.destination + data.filename + ".jpg";
+            $scope.editPrifile.avatar = "../uploads/avatar/" + data.filename;
         });
     }]);

@@ -20,28 +20,34 @@ html(lang='en', ng-app='baseApp')
               span.icon-bar
             a.navbar-brand(href='/#/') Portfolio Base
           #bs-example-navbar-collapse-1.collapse.navbar-collapse
-            ul.nav.navbar-nav
-              li
-                a(href='/#/myprojects') My projects
-              li
-                a(href='/#/addproject') Add new project
-              li
-                a(href='/#/allusers') All users
-            ul.nav.navbar-nav.navbar-right
-              li
-                a(href='javascript:void(0);') Welcome my friend
-              li.dropdown
-                a.dropdown-toggle(href='javascript:void(0)', data-toggle='dropdown', role='button', aria-haspopup='true', aria-expanded='false')
-                  | Settings
-                  span.caret
-                ul.dropdown-menu
-                  li
-                    a(href='/#/profail') My profile
-                  li.divider(role='separator')
-                  li
-                    a(href='/#/editprofail') Edit profile
-                  li
-                    a(href='/#/logout') Log out
+            if (user)
+              ul.nav.navbar-nav
+                li
+                  a(href='/#/myprojects') My projects
+                li
+                  a(href='/#/addproject') Add new project
+                li
+                  a(href='/#/allusers') All users
+              ul.nav.navbar-nav.navbar-right
+                li
+                  a(href='javascript:void(0);') Welcome my friend
+                li.dropdown
+                  a.dropdown-toggle(href='javascript:void(0)', data-toggle='dropdown', role='button', aria-haspopup='true', aria-expanded='false')
+                    | Settings
+                    span.caret
+                  ul.dropdown-menu
+                    li
+                      a(href='/#/profail') My profile
+                    li.divider(role='separator')
+                    li
+                      a(href='/#/editprofail') Edit profile
+                    li
+                      a(href='/#/logout') Log out
+            if (!user)
+              ul.nav.navbar-nav.navbar-right
+                li
+                  a(href='/#/authorization') Login
+                
           // /.navbar-collapse
         // /.container
       .container
@@ -67,16 +73,22 @@ html(lang='en', ng-app='baseApp')
     // injector:js
     script(src='baseApp/modules/add-project-module/add-project-module.js')
     script(src='baseApp/modules/all-users-module/all-users-module.js')
+    script(src='baseApp/modules/authorization-module/authorization-module.js')
     script(src='baseApp/modules/edit-profile-module/edit-profile-module.js')
     script(src='baseApp/modules/home-page-module/home-page-module.js')
     script(src='baseApp/modules/logout-module/logout-module.js')
     script(src='baseApp/modules/my-projects-module/my-projects-module.js')
     script(src='baseApp/modules/profile-module/profile-module.js')
+    script(src='baseApp/modules/registration-module/registration-module.js')
     script(src='baseApp/common/directives/file-input-directive.js')
+    script(src='baseApp/common/resources/authorization-factory.js')
     script(src='baseApp/common/resources/portfolio-factory.js')
+    script(src='baseApp/common/resources/registration-factory.js')
     script(src='baseApp/common/resources/upload-images-factory.js')
     script(src='baseApp/common/resources/user-profile-factory.js')
+    script(src='baseApp/common/services/authorization-service.js')
     script(src='baseApp/common/services/portfolio-service.js')
+    script(src='baseApp/common/services/registration-service.js')
     script(src='baseApp/common/services/upload-images-service.js')
     script(src='baseApp/common/services/user-profile-service.js')
     // endinjector

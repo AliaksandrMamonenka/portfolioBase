@@ -11,14 +11,20 @@ angular.module('baseApp', [
   'portfolio.module.profail',
   'portfolio.module.logout',
   'portfolio.module.allUsers',
+  'portfolio.module.registration',
+  'portfolio.module.authorization',
   //resource
   'portfolio.resources.portfolioFactory',
   'portfolio.resources.userProfileFactory',
   'portfolio.resources.uploadImagesFactory',
+  'portfolio.resources.registrationFactory',
+  'portfolio.resources.authorizationFactory',
   //service
   'portfolio.services.portfolioService',
   'portfolio.services.userProfileService',
   'portfolio.services.uploadImagesService',
+  'portfolio.services.registrationService',
+  'portfolio.services.authorizationService',
   //directive
   'portfolio.directives.fileInput'
   
@@ -30,6 +36,16 @@ angular.module('baseApp', [
   $routeProvider.when('/', {
     templateUrl: 'baseApp/modules/home-page-module/home-page-module.html',
     controller: 'HomePageCtrl'
+  });
+  
+  $routeProvider.when('/registration', {
+    templateUrl: 'baseApp/modules/registration-module/registration-module.html',
+    controller: 'RegistrationCtrl'
+  });
+  
+  $routeProvider.when('/authorization', {
+    templateUrl: 'baseApp/modules/authorization-module/authorization-module.html',
+    controller: 'AuthorizationCtrl'
   });
   
   $routeProvider.when('/addproject', {

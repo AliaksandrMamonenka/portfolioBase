@@ -8,7 +8,9 @@
 			</form>
 		</div>
 		<div>
-			<img ng-src="{{editPrifile.avatar}}" alt="Avatar">
+			<img ng-if="editPrifile.avatar" ng-src="{{editPrifile.avatar}}" alt="Avatar">
+			
+			<img ng-if="!editPrifile.avatar" src="../uploads/avatar/noavatar.png" alt="No avatar">
 		</div>
 	</div>
 	<div class="col-md-6">

@@ -330,3 +330,55 @@ angular.module('portfolio.module.editProfile', ['angularFileUpload'])
             }
         };
     }]);
+    
+    
+    
+    
+    extends layout
+
+block content
+  #page-wrapper
+      // Static navbar
+      nav.navbar.navbar-default.navbar-fixed-top
+        .container
+          // Brand and toggle get grouped for better mobile display
+          .navbar-header
+            button.navbar-toggle.collapsed(type='button', data-toggle='collapse', data-target='#bs-example-navbar-collapse-1', aria-expanded='false')
+              span.sr-only Toggle navigation
+              span.icon-bar
+              span.icon-bar
+              span.icon-bar
+            a.navbar-brand(href='/#/') Portfolio Base
+          #bs-example-navbar-collapse-1.collapse.navbar-collapse
+            ul.nav.navbar-nav
+              li
+                a(href='/#/myprojects') My projects
+              li
+                a(href='/#/addproject') Add new project
+              li
+                a(href='/#/allusers') All users
+            ul.nav.navbar-nav.navbar-right
+              li
+                a(href='javascript:void(0);') Welcome my friend
+              li.dropdown
+                a.dropdown-toggle(href='javascript:void(0)', data-toggle='dropdown', role='button', aria-haspopup='true', aria-expanded='false')
+                  | Settings
+                  span.caret
+                ul.dropdown-menu
+                  li
+                    a(href='/#/profail') My profile
+                  li.divider(role='separator')
+                  li
+                    a(href='/#/editprofail') Edit profile
+                  li
+                    a(href='/#/logout') Log out
+          // /.navbar-collapse
+        // /.container
+      .container
+        div(ng-view='')
+       
+      // /container
+    footer#footer
+      .container
+        p.text-muted.pull-right
+          em betta version
