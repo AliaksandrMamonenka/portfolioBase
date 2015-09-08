@@ -5,6 +5,6 @@ angular.module('portfolio.module.authorization', ['ngRoute'])
 		$scope.authorization = {};
 		$scope.authorization.form = {};
 		$scope.authorization.sendForm = function () {
-			console.log("SEND authorization FORM");
+			authorizationService.sendData($scope.authorization.form);
 		};
 	}]);

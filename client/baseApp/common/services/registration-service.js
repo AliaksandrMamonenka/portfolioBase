@@ -1,19 +1,15 @@
 'use strict';
 
 angular.module('portfolio.services.registrationService', [])
-    .factory('registrationService', ['$rootScope', 'registrationFactory', function ($rootScope, registrationFactory) {
+    .factory('registrationService', ['$rootScope', 'registrationFactory', '$window', function ($rootScope, registrationFactory,  $window) {
         return {
             sendData: function (data) {
-                registrationFactory.sendRequest(data);
+                registrationFactory.sendRequest(data).$promise.then(function (responce) {
+                     $window.location.assign('/');
+                }, function (error) {
+                    console.log("ERROR!!!!!");
+                });
             }
-            //     sendAvatar: function (data) {
-
-            //         uploadImagesFactory.uploadAvatar(data).$promise.then(function (responce) {
-            //             $rootScope.$broadcast('avatarUploated', responce);
-            //         }, function (error) {
-            //             console.log("ERROR!!!!!");
-            //         });;
-            //     }
         };
     }]);
 

@@ -1,19 +1,15 @@
 'use strict';
 
 angular.module('portfolio.services.authorizationService', [])
-    .factory('authorizationService', ['$rootScope', 'authorizationFactory', function ($rootScope, authorizationFactory) {
+    .factory('authorizationService', ['$rootScope', '$window', 'authorizationFactory', function ($rootScope, $window, authorizationFactory) {
         return {
             sendData: function (data) {
-                authorizationFactory.sendRequest(data);
+                authorizationFactory.sendRequest(data).$promise.then(function (responce) {
+                    $window.location.assign('/');
+                }, function (error) {
+                    console.log("ERROR!!!!!");
+                });
             }
-            //     sendAvatar: function (data) {
-
-            //         uploadImagesFactory.uploadAvatar(data).$promise.then(function (responce) {
-            //             $rootScope.$broadcast('avatarUploated', responce);
-            //         }, function (error) {
-            //             console.log("ERROR!!!!!");
-            //         });;
-            //     }
         };
     }]);
 

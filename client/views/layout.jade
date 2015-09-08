@@ -30,7 +30,7 @@ html(lang='en', ng-app='baseApp')
                   a(href='/#/allusers') All users
               ul.nav.navbar-nav.navbar-right
                 li
-                  a(href='javascript:void(0);') Welcome my friend
+                  a(href='javascript:void(0);') Welcome, #{user.username}
                 li.dropdown
                   a.dropdown-toggle(href='javascript:void(0)', data-toggle='dropdown', role='button', aria-haspopup='true', aria-expanded='false')
                     | Settings
@@ -42,7 +42,7 @@ html(lang='en', ng-app='baseApp')
                     li
                       a(href='/#/editprofail') Edit profile
                     li
-                      a(href='/#/logout') Log out
+                      a(href='/logout') Log out
             if (!user)
               ul.nav.navbar-nav.navbar-right
                 li

@@ -10,13 +10,13 @@ var mongoose = require('mongoose');
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 //need for deleting
-var methodOverride = require('method-override');
+// var methodOverride = require('method-override');
+// app.use(methodOverride());
 
 var app = express();
 var port = process.env.PORT || 3000;
 
-//connect to DB
-mongoose.connect('mongodb://localhost/portfolio');
+
 
 // view engine setup
 app.set('views', path.resolve(__dirname, '../client','views'));
@@ -33,14 +33,19 @@ app.use(require('express-session')({
 }));
 app.use(passport.initialize());
 app.use(passport.session());
-app.use(methodOverride());
+
+// console.log(path.resolve(__dirname, '../client'));
 app.use(express.static(path.resolve(__dirname, '../client')));
+
 
 // passport config
 var Account = require('./models/account');
 passport.use(new LocalStrategy(Account.authenticate()));
 passport.serializeUser(Account.serializeUser());
 passport.deserializeUser(Account.deserializeUser());
+
+//connect to DB
+mongoose.connect('mongodb://localhost/portfolio');
 
 // catch 404 and forward to error handler
 // app.use(function(req, res, next) {

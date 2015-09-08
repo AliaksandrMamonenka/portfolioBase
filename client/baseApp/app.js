@@ -73,10 +73,10 @@ angular.module('baseApp', [
     controller: 'ProfileCtrl'
   });
   
-  $routeProvider.when('/logout', {
-    templateUrl: 'baseApp/modules/logout-module/logout-module.html',
-    controller: 'LogoutCtrl'
-  });
+  // $routeProvider.when('/logout', {
+  //   templateUrl: 'baseApp/modules/logout-module/logout-module.html',
+  //   controller: 'LogoutCtrl'
+  // });
   
   $routeProvider.otherwise({ redirectTo: '/' });
   
