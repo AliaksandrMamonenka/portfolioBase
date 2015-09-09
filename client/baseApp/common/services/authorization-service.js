@@ -5,6 +5,7 @@ angular.module('portfolio.services.authorizationService', [])
         return {
             sendData: function (data) {
                 authorizationFactory.sendRequest(data).$promise.then(function (responce) {
+                    console.log(responce);
                     $window.location.assign('/');
                 }, function (error) {
                     console.log("ERROR!!!!!");

@@ -1,4 +1,4 @@
-var Portfolio = require('../models/portfolio');
+var Portfolio = require('../models/portfolioSchema');
 
 module.exports = function (router) {
 	//add new portfolio to DB

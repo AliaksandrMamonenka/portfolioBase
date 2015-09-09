@@ -39,34 +39,25 @@ app.use(express.static(path.resolve(__dirname, '../client')));
 
 
 // passport config
-var Account = require('./models/account');
-passport.use(new LocalStrategy(Account.authenticate()));
-passport.serializeUser(Account.serializeUser());
-passport.deserializeUser(Account.deserializeUser());
+var User = require('./models/userSchema');
+passport.use(new LocalStrategy(User.authenticate()));
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
 
 //connect to DB
 mongoose.connect('mongodb://localhost/portfolio');
 
-// catch 404 and forward to error handler
-// app.use(function(req, res, next) {
-//     var err = new Error('Not Found');
-//     err.status = 404;
-//     next(err);
-// });
-
 //define routing
 var routing = express.Router();
 
-require('./routes/indexCtrl')(routing);
 require('./routes/userCtrl')(routing);
 require('./routes/portfolioCtrl')(routing);
 require('./routes/uploadImagesCtrl')(routing);
 
 app.use('/', routing);
-app.use('/userprofile', routing);
-app.use('/portfolio', routing);
-app.use('/photos', routing);
-//photos/avatar
-app.listen(port, function(){});
+app.use('/usersettings', routing);
+app.use('/portfoliosettings', routing);
+app.use('/imagesettings', routing);
 
+app.listen(port, function(){});
 console.log("Server is running... PORT: " + port);

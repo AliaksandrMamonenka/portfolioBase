@@ -3,7 +3,7 @@
 
 angular.module('portfolio.resources.registrationFactory', [])
     .factory('registrationFactory', ['$resource', function ($resource) {
-        return $resource('/registration', {}, {
+        return $resource('usersettings/registration', {}, {
             sendRequest: { method: 'POST', isArray: false}
         });
     }]);

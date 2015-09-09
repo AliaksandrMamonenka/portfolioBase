@@ -3,7 +3,7 @@
 
 angular.module('portfolio.resources.authorizationFactory', [])
     .factory('authorizationFactory', ['$resource', function ($resource) {
-        return $resource('/authorization', {}, {
+        return $resource('usersettings/authorization', {}, {
             sendRequest: { method: 'POST', isArray: false}
         });
     }]);
