@@ -1,15 +1,18 @@
 angular.module('portfolio.directives.fileInput', [])
-    .directive('fileInput', ['$parse',function($parse){
+    .directive('fileInput', ['$parse', function ($parse) {
 
-       return {
-    		restrict:'A',
-    		link:function(scope,elm,attrs){
-    			elm.bind('change',function(){
-                    
-    				$parse(attrs.fileInput).assign(scope,elm[0].files);
-    				scope.$apply();
-    			})
-    		}
-    	}
+        return {
+            restrict: 'A',
+            link: function (scope, elem, attrs) {
 
+                var model = $parse(attrs.fileInput),
+                    modelSetter = model.assign;
+
+                elem.bind('change', function () {
+                    scope.$apply(function () {
+                        modelSetter(scope, elem[0].files);
+                    })
+                });
+            }
+        }
     }]);

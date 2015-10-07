@@ -27,7 +27,7 @@ html(lang='en', ng-app='baseApp')
                 li
                   a(href='/#/addproject') Add new project
                 li
-                  a(href='/#/allusers') All users
+                  // a(href='/#/allusers') All users
               ul.nav.navbar-nav.navbar-right
                 li
                   a(href='javascript:void(0);') Welcome, #{user.username}
@@ -42,7 +42,7 @@ html(lang='en', ng-app='baseApp')
                     li
                       a(href='/#/editprofail') Edit profile
                     li
-                      a(href='/logout') Log out
+                      a(href='/#/logout') Log out
             if (!user)
               ul.nav.navbar-nav.navbar-right
                 li
@@ -63,6 +63,7 @@ html(lang='en', ng-app='baseApp')
     script(src='../bower_components/jquery/dist/jquery.js')
     script(src='../bower_components/angular/angular.js')
     script(src='../bower_components/angular-bootstrap/ui-bootstrap-tpls.js')
+    script(src='../bower_components/angular-cookie/angular-cookie.js')
     script(src='../bower_components/angular-file-upload/dist/angular-file-upload.min.js')
     script(src='../bower_components/angular-resource/angular-resource.js')
     script(src='../bower_components/angular-route/angular-route.js')
@@ -75,21 +76,22 @@ html(lang='en', ng-app='baseApp')
     script(src='baseApp/modules/all-users-module/all-users-module.js')
     script(src='baseApp/modules/authorization-module/authorization-module.js')
     script(src='baseApp/modules/edit-profile-module/edit-profile-module.js')
+    script(src='baseApp/modules/edit-project-module/edit-project-module.js')
     script(src='baseApp/modules/home-page-module/home-page-module.js')
     script(src='baseApp/modules/logout-module/logout-module.js')
     script(src='baseApp/modules/my-projects-module/my-projects-module.js')
     script(src='baseApp/modules/profile-module/profile-module.js')
+    script(src='baseApp/modules/projects-description-module/projects-description-module.js')
     script(src='baseApp/modules/registration-module/registration-module.js')
     script(src='baseApp/common/directives/file-input-directive.js')
     script(src='baseApp/common/resources/authorization-factory.js')
-    script(src='baseApp/common/resources/portfolio-factory.js')
+    script(src='baseApp/common/resources/projects-factory.js')
     script(src='baseApp/common/resources/registration-factory.js')
-    script(src='baseApp/common/resources/upload-images-factory.js')
-    script(src='baseApp/common/resources/user-profile-factory.js')
+    script(src='baseApp/common/resources/users-factory.js')
     script(src='baseApp/common/services/authorization-service.js')
-    script(src='baseApp/common/services/portfolio-service.js')
+    script(src='baseApp/common/services/cookies-service.js')
+    script(src='baseApp/common/services/projects-service.js')
     script(src='baseApp/common/services/registration-service.js')
-    script(src='baseApp/common/services/upload-images-service.js')
-    script(src='baseApp/common/services/user-profile-service.js')
+    script(src='baseApp/common/services/users-service.js')
     // endinjector
     

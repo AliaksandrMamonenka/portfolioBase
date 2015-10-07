@@ -1,59 +1,64 @@
 <div class="row">
-	<div class="col-md-6">
-		<div>
-			<form class="well">
-				<input type="file" file-input="files" name="avatar" />
-				<button ng-click="editPrifile.uploadAvatar()">Upload</button>
-				<li ng-repeat="file in files">{{file.name}}</li>
-			</form>
+	<div class="col-md-12">
+		<div class="panel panel-default">
+			<div class="panel-heading">Edit profile</div>
+			<div class="panel-body">
+				<div class="col-sm-12 col-md-4 img-width-cst">
+					<div>
+						<img ng-src="{{editProfile.avatar}}" alt="Avatar">
+					</div>
+					<div>
+						<form class="well">
+							<input type="file" file-input="files" name="avatar" />
+							<button class="btn btn-success" ng-click="editProfile.uploadAvatar()">Change Avatar</button>
+						</form>
+					</div>
+				</div>
+				<div class="col-sm-12 col-md-8">
+					<form class="well">
+						<div class="form-group">
+							<label>First Name</label>
+							<input type="text" class="form-control" placeholder="Enter First Name" ng-model="editProfile.form.firstname">
+						</div>
+						<div class="form-group">
+							<label>Last Name</label>
+							<input type="text" class="form-control" placeholder="Enter Last Name" ng-model="editProfile.form.lastname">
+						</div>
+						<div class="form-group">
+							<label>Job Title</label>
+							<input type="text" class="form-control" placeholder="Enter Job Title" ng-model="editProfile.form.jobtitle">
+						</div>
+						<div class="form-group">
+							<label>Primary Skill</label>
+							<input type="text" class="form-control" placeholder="Enter Primary Skill" ng-model="editProfile.form.primaryskill">
+						</div>
+						<div class="form-group">
+							<label>Email</label>
+							<input type="text" class="form-control" placeholder="Enter Email" ng-model="editProfile.form.email">
+						</div>
+						<div class="form-group">
+							<label>Skype</label>
+							<input type="text" class="form-control" placeholder="Enter Skype" ng-model="editProfile.form.skype">
+						</div>
+						<div class="form-group">
+							<label>Phone Number</label>
+							<input type="text" class="form-control" placeholder="Enter Phone Namber" ng-model="editProfile.form.phonenumber">
+						</div>
+						<div class="form-group">
+							<label>Country</label>
+							<input type="text" class="form-control" placeholder="Enter Country" ng-model="editProfile.form.address.country">
+						</div>
+						<div class="form-group">
+							<label>City</label>
+							<input type="text" class="form-control" placeholder="Enter City" ng-model="editProfile.form.address.city">
+						</div>
+						<div class="form-group">
+							<button type="submit" class="btn btn-success" ng-click="editProfile.downloadChanges()">Update</button>
+							<a href="/#/profail"><button type="button" class="btn btn-danger">Cancel</button></a>
+						</div>
+					</form>
+				</div>
+			</div>
 		</div>
-		<div>
-			<img ng-if="editPrifile.avatar" ng-src="{{editPrifile.avatar}}" alt="Avatar">
-			
-			<img ng-if="!editPrifile.avatar" src="../uploads/avatar/noavatar.png" alt="No avatar">
-		</div>
-	</div>
-	<div class="col-md-6">
-		<form class="well">
-			<div class="form-group">
-				<label>First Name</label>
-				<input type="text" class="form-control" ng-model="editPrifile.form.firstname">
-			</div>
-			<div class="form-group">
-				<label>Last Name</label>
-				<input type="text" class="form-control" ng-model="editPrifile.form.lastname">
-			</div>
-			<div class="form-group">
-				<label>Job Title</label>
-				<input type="text" class="form-control" ng-model="editPrifile.form.jobtitle">
-			</div>
-			<div class="form-group">
-				<label>Primary Skill</label>
-				<input type="text" class="form-control" ng-model="editPrifile.form.primaryskill">
-			</div>
-			<div class="form-group">
-				<label>Email</label>
-				<input type="text" class="form-control" ng-model="editPrifile.form.email">
-			</div>
-			<div class="form-group">
-				<label>Skype</label>
-				<input type="text" class="form-control" ng-model="editPrifile.form.skype">
-			</div>
-			<div class="form-group">
-				<label>Phone Number</label>
-				<input type="text" class="form-control" ng-model="editPrifile.form.phonenumber">
-			</div>
-			<div class="form-group">
-				<label>Country</label>
-				<input type="text" class="form-control" ng-model="editPrifile.form.address.country">
-			</div>
-			<div class="form-group">
-				<label>City</label>
-				<input type="text" class="form-control" ng-model="editPrifile.form.address.city">
-			</div>
-			<div class="form-group">
-				<button type="submit" class="btn btn-success" ng-click="editPrifile.addToDB()">Update</button>
-			</div>
-		</form>
 	</div>
 </div>

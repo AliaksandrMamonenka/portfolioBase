@@ -1,5 +1,6 @@
 <div class="table-responsive">
-	<table class="table table-hover">
+	<p ng-if="userProjects.allProjects.length < 1" class="alert alert-info">Add your first project ! Become a hero !</p>
+	<table class="table table-hover" ng-if="userProjects.allProjects.length">
 		<thead>
 			<tr>
 				<th>Project Name</th>
@@ -9,13 +10,13 @@
 			</tr>
 		</thead>
 		<tbody>
-			<tr ng-repeat="portfolio in myportfolios.allportfolios">
-				<td>{{portfolio.projectname}}</td>
-				<td>{{portfolio.technologies}}</td>
-				<td>{{portfolio.tools}}</td>
+			<tr ng-repeat="project in userProjects.allProjects">
+				<td>{{project.projectname}}</td>
+				<td>{{project.technologies}}</td>
+				<td>{{project.tools}}</td>
 				<td>
-					<span class="glyphicon glyphicon-trash" ng-click="myportfolios.removePortfolio(portfolio, $index)"></span>
-					<span class="glyphicon glyphicon-pencil" ng-click="homePage.editPortfolio(portfolio)"></span>
+					<span class="glyphicon glyphicon-trash" ng-click="userProjects.deleteProject(project, $index)"></span>
+					<span class="glyphicon glyphicon-pencil" ng-click="userProjects.editProject(project)"></span>
 				</td>
 			</tr>
 		</tbody>

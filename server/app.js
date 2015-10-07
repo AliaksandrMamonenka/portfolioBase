@@ -19,7 +19,7 @@ var port = process.env.PORT || 3000;
 
 
 // view engine setup
-app.set('views', path.resolve(__dirname, '../client','views'));
+app.set('views', path.resolve(__dirname, '../client', 'views'));
 app.set('view engine', 'jade');
 
 app.use(favicon(__dirname + '/favicon.ico'));
@@ -51,13 +51,10 @@ mongoose.connect('mongodb://localhost/portfolio');
 var routing = express.Router();
 
 require('./routes/userCtrl')(routing);
-require('./routes/portfolioCtrl')(routing);
-require('./routes/uploadImagesCtrl')(routing);
+// require('./routes/uploadImagesCtrl')(routing);
+require('./routes/projectsCtrl')(routing);
 
 app.use('/', routing);
-app.use('/usersettings', routing);
-app.use('/portfoliosettings', routing);
-app.use('/imagesettings', routing);
 
-app.listen(port, function(){});
+app.listen(port, function () { });
 console.log("Server is running... PORT: " + port);

@@ -5821,4 +5821,7 @@ body {
   .glyphicon:hover {
     opacity: .8; }
 
+.img-width-cst img {
+  width: 100%; }
+
 /*# sourceMappingURL=styles.css.map */

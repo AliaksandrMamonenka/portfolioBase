@@ -1,29 +1,43 @@
-<form class="well">
-	<!--<div class="form-group">
-		<label>Images</label>
-		<input type="file">
-	</div>-->
-	<div class="form-group">
-		<label>Project Name</label>
-		<input type="text" class="form-control" ng-model="portfolio.form.projectname">
+<div class="row">
+	<div class="col-md-12">
+		<div class="panel panel-default">
+			<div class="panel-heading">Add project</div>
+			<form>
+				<div class="panel-body">
+					<div class="col-sm-12">
+						<div class="form-group"> 
+							<label>Add Images</label>
+							<input type="file" name="file" file-input="project.form.files" multiple>
+							<ul>
+								<li ng-repeat="file in project.form.files">{{file.name}}</li>
+							</ul>
+						</div>
+						<div class="form-group">
+							<label>Project Name</label>
+							<input type="text" class="form-control" ng-model="project.form.projectname">
+						</div>
+						<div class="form-group">
+							<label>Projec URL</label>
+							<input type="text" class="form-control" ng-model="project.form.projecturl">
+						</div>
+						<div class="form-group">
+							<label>Description</label>
+							<textarea class="form-control" rows="3" placeholder="Short business/technical description of the project" ng-model="project.form.description"></textarea>
+						</div>
+						<div class="form-group">
+							<label>Technologies</label>
+							<textarea class="form-control" rows="3" placeholder="Describe the basic technologies that you used for the project" ng-model="project.form.technologies"></textarea>
+						</div>
+						<div class="form-group">
+							<label>Tools</label>
+							<textarea class="form-control" rows="3" placeholder="Enumerate the tools that you used on the project" ng-model="project.form.tools"></textarea>
+						</div>
+						<div class="form-group">
+							<button type="submit" class="btn btn-success" ng-click="project.addProject()">Add project</button>
+						</div> 
+					</div> 
+				</div>
+			</form>
+		</div>
 	</div>
-	<div class="form-group">
-		<label>Projec URL</label>
-		<input type="text" class="form-control" ng-model="portfolio.form.projecturl">
-	</div>
-	<div class="form-group">
-		<label>Description</label>
-		<textarea class="form-control" rows="3" placeholder="Short business/technical description of the project" ng-model="portfolio.form.description"></textarea>
-	</div>
-	<div class="form-group">
-		<label>Technologies</label>
-		<textarea class="form-control" rows="3" placeholder="Describe the basic technologies that you used for the project" ng-model="portfolio.form.technologies"></textarea>
-	</div>
-	<div class="form-group">
-		<label>Tools</label>
-		<textarea class="form-control" rows="3" placeholder="Enumerate the tools that you used on the project" ng-model="portfolio.form.tools"></textarea>
-	</div>
-	<div class="form-group">
-		<button type="submit" class="btn btn-success" ng-click="portfolio.addPortfolio()">Add project</button>
-	</div>
-</form>
+</div>

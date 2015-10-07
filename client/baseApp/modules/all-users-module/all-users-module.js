@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('portfolio.module.allUsers', [])
-	.controller('allUsersCtrl', ['$scope', '$rootScope', 'userProfileService', function ($scope, $rootScope, userProfileService) {
+	.controller('allUsersCtrl', ['$scope', 'userProfileService', function ($scope, userProfileService) {
 		$scope.allUsers = {};
 
 		userProfileService.getAllProfiles();

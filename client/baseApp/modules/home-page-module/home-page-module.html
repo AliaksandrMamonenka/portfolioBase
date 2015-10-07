@@ -1,17 +1,18 @@
 <div class="row">
-	<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi debitis velit pariatur et ducimus est ea aliquam aut porro aperiam! Error perspiciatis praesentium, nesciunt sunt repellat fuga doloremque ipsum modi!</p>
-	{{2+3}}
-	<div class="col-md-12" ng-repeat="portfolio in homePage.getAllPortfolios">
+	<p class="alert alert-info" ng-if="homePage.allProjects.length < 1">There is no projects yet. You can be the first :)</p>
+	<div class="col-md-12" ng-repeat="project in homePage.allProjects">
 		<div class="panel panel-default">
-			<div class="panel-heading">{{portfolio.projectname}}</div>
-			<div class="panel-body">
-				<div class="col-sm-12 col-md-3" style="text-align:center"><img src="http://fakeimg.pl/150/?text=Image"></div>
+			<div class="panel-heading">{{project.projectname}}</div>
+			<div class="panel-body img-width-cst" >
+				<div class="col-sm-12 col-md-3" style="text-align:center">
+					<img ng-if="!project.images.length" ng-src="../uploads/images/no.jpg" alt="Image">
+					<img ng-if="project.images.length" ng-src="../uploads/images/{{project.images[0].filename}}" alt="Image">
+				</div>
 				<div class="col-sm-12 col-md-9">
-					<p>{{portfolio.description}} <a href="#" class="alert-link">read more...</a></p>
+					<p>{{project.description}} <a href="javascript:void(0)" class="alert-link" ng-click="homePage.getFullInfo(project)">read more...</a></p>
 				</div>
 			</div>
-			<div class="panel-footer">Technologies: {{portfolio.technologies}} </div>
+			<div class="panel-footer">Technologies: {{project.technologies}} </div>
 		</div>
 	</div>
 </div>
-	

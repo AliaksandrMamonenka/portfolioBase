@@ -1,13 +1,19 @@
 'use strict';
 
 angular.module('portfolio.module.homePage', [])
-	.controller('HomePageCtrl', ['$scope', '$rootScope', 'portfolioService', function ($scope, $rootScope, portfolioService) {
+	.controller('HomePageCtrl', ['$scope', 'projectsService', '$window', function ($scope, projectsService, $window) {
 		$scope.homePage = {};
 
-		portfolioService.getAllPortfolios();
+		projectsService.getAllProjects();
 
-		$scope.$on('getAllPortfolios', function (event, data) {
+		$scope.homePage.getFullInfo = function (data) {
 
-			$scope.homePage.getAllPortfolios = data;
+			projectsService.setData(data);
+			$window.location.assign('/#/projectdescription');
+		}
+
+		$scope.$on('getAllProjects', function (event, data) {
+
+			$scope.homePage.allProjects = data;
 		});
 	}]);

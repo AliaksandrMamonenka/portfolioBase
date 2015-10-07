@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('portfolio.module.authorization', ['ngRoute'])
+angular.module('portfolio.module.authorization', [])
 	.controller('AuthorizationCtrl', ['$scope', 'authorizationService', function ($scope, authorizationService) {
 		$scope.authorization = {};
 		$scope.authorization.form = {};

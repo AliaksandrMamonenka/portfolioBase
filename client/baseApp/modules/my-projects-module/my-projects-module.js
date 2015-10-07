@@ -1,23 +1,23 @@
 'use strict';
 
-angular.module('portfolio.module.myProjects', ['ngRoute'])
-	.controller('MyProjectsModuleCtrl', ['$scope', '$rootScope', 'portfolioService', function ($scope, $rootScope, portfolioService) {
-		$scope.myportfolios = {};
-		portfolioService.getAllPortfolios();
+angular.module('portfolio.module.myProjects', [])
+	.controller('MyProjectsModuleCtrl', ['$scope', '$window', 'projectsService', function ($scope, $window, projectsService) {
+		$scope.userProjects = {};
+		projectsService.getUserProjects();
 
-		$scope.$on('getAllPortfolios', function (event, data) {
-			
-			$scope.myportfolios.allportfolios = data;
+		$scope.$on('getDataProjects', function (event, data) {
+
+			$scope.userProjects.allProjects = data;
 		});
-		
-		$scope.myportfolios.removePortfolio = function(portfolio, index){
-			portfolioService.deletePortfolio(portfolio._id);
-			
-			$scope.myportfolios.allportfolios.splice(index, 1);
-		};
-		
-		$scope.myportfolios.editPortfolio = function (portfolio) {
 
-			console.log("EDIT");
+		$scope.userProjects.deleteProject = function (project, index) {
+			projectsService.deletePproject(project._id);
+
+			$scope.userProjects.allProjects.splice(index, 1);
+		};
+
+		$scope.userProjects.editProject = function (project) {
+			projectsService.setData(project);
+			$window.location.assign('/#/editproject');
 		};
 	}]);

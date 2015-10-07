@@ -1,6 +1,8 @@
 var express = require('express');
 var passport = require('passport');
 var User = require('../models/userSchema');
+var multer = require('multer');
+var uploadAvatar = multer({ dest: 'client/uploads/avatar/' });
 
 module.exports = function (router) {
 	router.get('/', function (req, res) {
@@ -18,40 +20,55 @@ module.exports = function (router) {
             }
 
             passport.authenticate('local')(req, res, function () {
-                res.json({ success: true })
+				// console.log(req.user._id);
+                res.json({ userId: req.user._id });
             });
         });
 	});
 
 	router.post('/authorization', passport.authenticate('local'), function (req, res) {
-		res.json({ success: true })
+		// console.log(req.user._id );
+		res.json({ userId: req.user._id });
 	});
 
 	router.get('/logout', function (req, res) {
 		req.logout();
-		res.redirect('/');
+		res.json({ success: "ok" });
+	});
+	
+	
+	
+	//get all users
+	router.get('/userprofile', function (req, res) {
+		User.find({}, function (err, data) {
+			res.json(data);
+		});
+	});
+	
+	//get specific user
+	router.get('/userprofile/:id', function (req, res) {
+		User.findOne({ _id: req.params.id }, function (err, data) {
+			res.json(data);
+		});
 	});
 	
 	//edit user
-	router.get('/edituserprofile/:id', function (req, res) {
+	router.post('/userprofile/:id', function (req, res) {
 		User.findOne({ _id: req.params.id }, function (err, data) {
 			var user = data;
 
-			user.firstname = req.body.firstname || null;
-			user.lastname = req.body.lastname || null;
-			user.jobtitle = req.body.jobtitle || null;
-			user.primaryskill = req.body.primaryskill || null;
-			user.skype = req.body.skype || null;
-			user.phonenumber = req.body.phonenumber || null;
-			
-			if(user.address && user.address.country){
-				user.address.country = req.body.address.country
+			user.avtarurl = req.body.avtarurl;
+			user.firstname = req.body.firstname;
+			user.lastname = req.body.lastname;
+			user.jobtitle = req.body.jobtitle;
+			user.primaryskill = req.body.primaryskill;
+			user.skype = req.body.skype;
+			user.phonenumber = req.body.phonenumber;
+			if (req.body.address) {
+				user.address.country = req.body.address.country;
+				user.address.city = req.body.address.city;
 			}
-			
-			if(user.address && user.address.city){
-				user.address.country = req.body.address.city
-			}
-			
+
 			user.save(function (err, data) {
 				if (err) {
 					throw err;
@@ -61,53 +78,15 @@ module.exports = function (router) {
 		});
 	});
 	
-	//add new user to DB
-	// router.post('/user', function (req, res) {
-	// 	var user = new User();
-
-	// 	user.firstname = req.body.firstname;
-	// 	user.lastname = req.body.lastname;
-	// 	user.jobtitle = req.body.jobtitle;
-	// 	user.primaryskill = req.body.primaryskill;
-	// 	user.email = req.body.email;
-	// 	user.skype = req.body.skype;
-	// 	user.phonenumber = req.body.phonenumber;
-	// 	user.address.country = req.body.address.country;
-	// 	user.address.city = req.body.address.city;
-
-	// 	user.save(function (err, data) {
-	// 		if (err) {
-	// 			throw err;
-	// 		}
-	// 		res.json(data);
-	// 	});
-	// });
+	//avatar flow
+	router.post('/useravatar/', uploadAvatar.single('avatar'), function (req, res, next) {
+		User.update({ _id: req.user._id }, { $set: { avtarurl: req.file.filename } }, function () {
+			res.json({
+				destination: req.file.destination,
+				filename: req.file.filename,
+				mimetype: req.file.mimetype
+			});
+		});
+	});
 	
-	//get all users
-	// router.get('/user', function (req, res) {
-	// 	User.find({}, function (err, data) {
-	// 		res.json(data);
-	// 	});
-	// });
-	
-	//delete all users
-	// router.delete('/user', function (req, res) {
-	// 	User.remove({}, function (err) {
-	// 		res.json({ result: err ? 'error' : 'ok' });
-	// 	});
-	// });
-	
-	//get specific user
-	// router.get('/user/:id', function (req, res) {
-	// 	User.findOne({ _id: req.params.id }, function (err, data) {
-	// 		res.json(data);
-	// 	});
-	// });
-	
-	//delete specific user
-	// router.delete('/user/:id', function (req, res) {
-	// 	User.remove({ _id: req.params.id }, function (err) {
-	// 		res.json({ result: err ? 'error' : 'ok' });
-	// 	});
-	// });
 };

@@ -1,34 +1,101 @@
 <div class="row">
 	<div class="col-md-12">
 		<div class="panel panel-default">
-			<div class="panel-heading">firstname lastname <div class="pull-right"><a href="/#/editprofail"><i class="fa fa-wrench fa-fw"></i> edit profile</a></div></div>
+			<div class="panel-heading">User profile
+				<div class="pull-right">
+					<a href="/#/editprofail"><i class="fa fa-wrench fa-fw"></i> edit profile</a>
+				</div>
+			</div>
 			<!-- /.panel-heading -->
 			<div class="panel-body">
-				<div class="col-sm-12 col-md-3" style="text-align:center">
-					<img src="http://fakeimg.pl/150/?text=Face">
+				<div class="col-sm-12 col-md-4 img-width-cst">
+					<div class="panel panel-default">
+						<div class="panel-heading">User Avatar</div>
+						<div class="panel-body">
+							<img ng-src="{{profile.avatar}}" >
+						</div>
+					</div>
 				</div>
-				<div class="col-sm-12 col-md-9">
-					<h3>
-						<small>jobtitle:</small>
-					</h3>
-					<p>jobtitle</p>
-					<h3>
-						<small>primaryskill:</small>
-					</h3>
-					<p>primaryskill</p>
-					<h3>
-						<small>contact info:</small>
-					</h3>
-					<p>email / skype / phonenumber</p>
-					<h3>
-						<small>Addresses:</small>
-					</h3>
-					<address>
-						<strong>Twitter, Inc.</strong>
-						<br>795 Folsom Ave, Suite 600
-						<br>San Francisco, CA 94107
-						<br>
-						<abbr title="Phone">P:</abbr>(123) 456-7890</address>
+				<div class="col-sm-12 col-md-8">
+					<div class="panel panel-default">
+						<div class="panel-heading">User information</div>
+						<div class="panel-body">
+							<ul class="list-unstyled">
+								<li>
+									<h3>
+										<small>Full Name:</small>
+									</h3>
+									<p>{{profile.userInfo.firstname}} {{profile.userInfo.lastname}}</p>
+									<p class="text-danger" ng-if="!profile.userInfo.firstname">please add this information...</p>
+								</li>
+								<li>
+									<h3>
+										<small>Job Title:</small>
+									</h3>
+									<p>{{profile.userInfo.jobtitle}}</p>
+									<p class="text-danger" ng-if="!profile.userInfo.jobtitle">please add this information...</p>
+								</li>
+								<li>
+									<h3>
+										<small>Primary Skill:</small>
+									</h3>
+									<p>{{profile.userInfo.primaryskill}}</p>
+									<p class="text-danger" ng-if="!profile.userInfo.primaryskill">please add this information...</p>
+								</li>
+							</ul>
+						</div>
+					</div>
+					<div class="panel panel-default">
+						<div class="panel-heading">Contact information</div>
+						<div class="panel-body">
+							<ul class="list-unstyled">
+								<li>
+									<h3>
+										<small>Email:</small>
+									</h3>
+									<p>{{profile.userInfo.email}}</p>
+									<p class="text-danger" ng-if="!profile.userInfo.email">please add this information...</p>
+								</li>
+								<li>
+									<h3>
+										<small>Skype:</small>
+									</h3>
+									<p>{{profile.userInfo.skype}}</p>
+									<p class="text-danger" ng-if="!profile.userInfo.skype">please add this information...</p>
+								</li>
+								<li>
+									<h3>
+										<small>Phone Number:</small>
+									</h3>
+									<p>{{profile.userInfo.phonenumber}}</p>
+									<p class="text-danger" ng-if="!profile.userInfo.phonenumber">please add this information...</p>
+								</li>
+							</ul>
+						</div>
+					</div>
+					<div class="panel panel-default">
+						<div class="panel-heading">Locatiuon</div>
+						<div class="panel-body">
+							<ul class="list-unstyled">
+								<li>
+									<li>
+										<h3>
+											<small>Country:</small>
+										</h3>
+										<p>{{profile.userInfo.address.country}}</p>
+										<p class="text-danger" ng-if="!profile.userInfo.address.country">please add this information...</p>
+									</li>
+									<li>
+										<h3>
+											<small>City:</small>
+										</h3>
+										<p>{{profile.userInfo.address.city}}</p>
+										<p class="text-danger" ng-if="!profile.userInfo.address.city">please add this information...</p>
+									</li>
+								</li>
+							</ul>
+						</div>
+					</div>
 				</div>
 			</div>
 			<!-- /.panel-body -->
