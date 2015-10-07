@@ -1,0 +1,57 @@
+<div class="row">
+	<div class="col-md-12"> 
+		<div class="panel panel-default">
+			<div class="panel-heading">Edit project</div>
+			<div class="panel-body">
+				<div class="col-sm-12 col-md-4 img-width-cst">
+					<div>
+						<img ng-if="!editProject.form.images.length" ng-src="../uploads/images/no.jpg" alt="Image">
+						<ul ng-if="editProject.form.images.length">
+							<li ng-repeat="image in editProject.form.images">
+								<img ng-src="../uploads/images/{{image.filename}}" alt="Image">	
+							</li>
+						</ul>
+					</div>
+					<div>
+						<form class="well">
+							<input type="file" file-input="editProject.form.files" name="photos" multiple />
+							<button class="btn btn-success" ng-click="editProject.editProjectImages()">Edit Images</button>
+						</form>
+						
+						<ul>
+							<li ng-repeat="file in editProject.form.files">{{file.name}}</li>
+						</ul>
+					</div>
+				</div>
+				<div class="col-sm-12 col-md-8">
+					<form class="well">
+						<div class="form-group">
+							<label>Project Name</label>
+							<input type="text" class="form-control" ng-model="editProject.form.projectname">
+						</div>
+						<div class="form-group">
+							<label>Projec URL</label>
+							<input type="text" class="form-control" ng-model="editProject.form.projecturl">
+						</div>
+						<div class="form-group">
+							<label>Description</label>
+							<textarea class="form-control" rows="3" placeholder="Short business/technical description of the project" ng-model="editProject.form.description"></textarea>
+						</div>
+						<div class="form-group">
+							<label>Technologies</label>
+							<textarea class="form-control" rows="3" placeholder="Describe the basic technologies that you used for the project" ng-model="editProject.form.technologies"></textarea>
+						</div>
+						<div class="form-group">
+							<label>Tools</label>
+							<textarea class="form-control" rows="3" placeholder="Enumerate the tools that you used on the project" ng-model="editProject.form.tools"></textarea>
+						</div>
+						<div class="form-group">
+							<button type="submit" class="btn btn-success" ng-click="editProject.editProject()">Edit project</button>
+							<a href="/#/myprojects"><button type="button" class="btn btn-danger">Cancel</button></a>
+						</div>
+					</form>
+				</div> 
+			</div> 
+		</div>
+	</div>
+</div>

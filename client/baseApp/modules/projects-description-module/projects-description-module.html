@@ -1,0 +1,66 @@
+<div class="row">
+	<div class="col-md-12">
+		<div class="panel panel-default">
+			<div class="panel-heading">Project description
+			</div>
+			<!-- /.panel-heading -->
+			<div class="panel-body">
+				<div class="col-sm-12 col-md-4 img-width-cst">
+					<div class="panel panel-default ">
+						<div class="panel-heading">Project images</div>
+						<div class="panel-body">   
+							<img ng-if="!projectDescription.images.length" ng-src="../uploads/images/no.jpg" alt="Image">
+							<ul ng-if="projectDescription.images.length">
+								<li ng-repeat="image in projectDescription.images">
+									<img ng-src="../uploads/images/{{image.filename}}" alt="Image">
+								</li>
+							</ul> 
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-12 col-md-8">
+					<div class="panel panel-default">
+						<div class="panel-heading">Project information</div>
+						<div class="panel-body">
+							<ul class="list-unstyled">
+								<li ng-if="projectDescription.projectname">
+									<h3>
+										<small>Project Name:</small>
+									</h3>
+									<p>{{projectDescription.projectname}}</p>
+
+								</li>
+								<li ng-if="projectDescription.projecturl">
+									<h3>
+										<small>Project URL:</small>
+									</h3>
+									<p>{{projectDescription.projecturl}}</p>
+								</li>
+								<li ng-if="projectDescription.description">
+									<h3>
+										<small>Project Description:</small>
+									</h3>
+									<p>{{projectDescription.description}}</p>
+								</li>
+								<li ng-if="projectDescription.technologies">
+									<h3>
+										<small>Project Technologies:</small>
+									</h3>
+									<p>{{projectDescription.technologies}}</p>
+								</li>
+								<li ng-if="projectDescription.description">
+									<h3>
+										<small>Tools:</small>
+									</h3>
+									<p>{{projectDescription.technologies}}</p>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- /.panel-body -->
+		</div>
+		<!-- /.panel -->
+	</div>
+</div>
