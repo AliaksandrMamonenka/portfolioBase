@@ -16,11 +16,11 @@ module.exports = function (router) {
 
 		User.register(user, req.body.password, function (err, user) {
             if (err) {
-                console.log(err);
+				res.json({ error: err.message });
             }
 
             passport.authenticate('local')(req, res, function () {
-				// console.log(req.user._id);
+				console.log(req);
                 res.json({ userId: req.user._id });
             });
         });
@@ -88,5 +88,5 @@ module.exports = function (router) {
 			});
 		});
 	});
-	
+
 };

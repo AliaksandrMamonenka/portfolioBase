@@ -4,11 +4,13 @@ angular.module('portfolio.module.registration', [])
 	.controller('RegistrationCtrl', ['$scope', 'registrationService', function ($scope, registrationService) {
 		$scope.registration = {};
 		$scope.registration.form = {};
+		$scope.registration.validation = {};
+		
 
 		if (!$scope.registration.isValid) {
 
 			$scope.registration.isValid = true;
-		}
+		} 
 
 		$scope.registration.sendForm = function () {
 			if ($scope.registration.form.password === $scope.registration.form.confirmpassword) {

@@ -1,7 +1,10 @@
 <div class="row">
 	<div class="col-md-6 col-md-offset-3">
 		<h1>Login Page</h1>
-		<form class="well">
+		<p class="alert alert-danger" ng-if="authorization.invalidData">
+			Invalid <b>Nickname</b> or <b>Password</b>. Please try again.
+		</p>
+		<form name="authorizationForm" class="well">
 			<div class="form-group">
 				<label>Nickname</label>
 				<input type="text" name="nickname" placeholder="Enter Nickname" class="form-control" ng-model="authorization.form.username">
@@ -12,8 +15,12 @@
 			</div>
 			<div class="form-group">
 				<button type="submit" class="btn btn-success" ng-click="authorization.sendForm()">Log in</button>
-				<a href="/#/"><button type="button" class="btn btn-danger">Cancel</button></a>
-				<a href="/#/registration" class="pull-right"><button type="button" class="btn btn-primary">Registration page</button></a>
+				<a href="/#/">
+					<button type="button" class="btn btn-danger">Cancel</button>
+				</a>
+				<a href="/#/registration" class="pull-right">
+					<button type="button" class="btn btn-primary">Registration page</button>
+				</a>
 			</div>
 		</form>
 	</div>

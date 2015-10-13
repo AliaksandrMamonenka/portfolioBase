@@ -8,6 +8,7 @@ angular.module('portfolio.services.registrationService', [])
                     cookieService.setCookie('userInfo', responce);
                     $window.location.assign('/');
                 }, function (error) {
+                    console.log(error);
                     console.log("ERROR FROM REGISTRATION SERVICE!!!!!");
                 });
             }

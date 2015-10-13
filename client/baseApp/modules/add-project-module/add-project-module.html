@@ -2,7 +2,7 @@
 	<div class="col-md-12">
 		<div class="panel panel-default">
 			<div class="panel-heading">Add project</div>
-			<form>
+			<form name="addProjectForm">
 				<div class="panel-body">
 					<div class="col-sm-12">
 						<div class="form-group"> 
@@ -13,27 +13,27 @@
 							</ul>
 						</div>
 						<div class="form-group">
-							<label>Project Name</label>
-							<input type="text" class="form-control" ng-model="project.form.projectname">
+							<label>Project Name<span class="text-danger">&#42;</span></label>
+							<input type="text" class="form-control" ng-model="project.form.projectname" required>
 						</div>
 						<div class="form-group">
 							<label>Projec URL</label>
 							<input type="text" class="form-control" ng-model="project.form.projecturl">
 						</div>
 						<div class="form-group">
-							<label>Description</label>
-							<textarea class="form-control" rows="3" placeholder="Short business/technical description of the project" ng-model="project.form.description"></textarea>
+							<label>Description<span class="text-danger">&#42;</span></label>
+							<textarea class="form-control" rows="3" placeholder="Short business/technical description of the project" ng-model="project.form.description" required></textarea>
 						</div>
 						<div class="form-group">
-							<label>Technologies</label>
-							<textarea class="form-control" rows="3" placeholder="Describe the basic technologies that you used for the project" ng-model="project.form.technologies"></textarea>
+							<label>Technologies<span class="text-danger">&#42;</span></label>
+							<textarea class="form-control" rows="3" placeholder="Describe the basic technologies that you used for the project" ng-model="project.form.technologies" required></textarea>
 						</div>
 						<div class="form-group">
 							<label>Tools</label>
 							<textarea class="form-control" rows="3" placeholder="Enumerate the tools that you used on the project" ng-model="project.form.tools"></textarea>
 						</div>
 						<div class="form-group">
-							<button type="submit" class="btn btn-success" ng-click="project.addProject()">Add project</button>
+							<button type="submit" class="btn btn-success" ng-disabled="addProjectForm.$invalid" ng-click="project.addProject()">Add project</button>
 						</div> 
 					</div> 
 				</div>

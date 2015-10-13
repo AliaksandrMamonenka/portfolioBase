@@ -8,7 +8,7 @@ angular.module('portfolio.services.authorizationService', [])
                     cookieService.setCookie('userInfo', responce);
                     $window.location.assign('/');
                 }, function (error) {
-                    console.log("ERROR!!!!!");
+                    $rootScope.$broadcast('invalidData', error);
                 });
             }
         };

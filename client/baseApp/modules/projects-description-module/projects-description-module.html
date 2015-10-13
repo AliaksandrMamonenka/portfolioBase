@@ -8,13 +8,18 @@
 				<div class="col-sm-12 col-md-4 img-width-cst">
 					<div class="panel panel-default ">
 						<div class="panel-heading">Project images</div>
-						<div class="panel-body">   
+						<div class="panel-body">
 							<img ng-if="!projectDescription.images.length" ng-src="../uploads/images/no.jpg" alt="Image">
-							<ul ng-if="projectDescription.images.length">
-								<li ng-repeat="image in projectDescription.images">
-									<img ng-src="../uploads/images/{{image.filename}}" alt="Image">
-								</li>
-							</ul> 
+
+							<!--slider-->
+							<div ng-if="projectDescription.images.length">
+								<uib-carousel no-wrap="projectDescription.slider.noWrapSlides">
+									<uib-slide ng-repeat="slide in projectDescription.images" active="slide.active">
+										<img ng-src="../uploads/images/{{slide.filename}}" style="margin:auto;">
+									</uib-slide>
+								</uib-carousel>
+							</div>
+							<!--end slider-->
 						</div>
 					</div>
 				</div>
@@ -59,7 +64,6 @@
 					</div>
 				</div>
 			</div>
-			<!-- /.panel-body -->
 		</div>
 		<!-- /.panel -->
 	</div>

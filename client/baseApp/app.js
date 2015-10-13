@@ -4,7 +4,11 @@
 angular.module('baseApp', [
   'ngRoute',
   'ngResource',
+  'ngAnimate',
   'ipCookie',
+  'ui.bootstrap', 
+  
+  //modules
   'portfolio.module.homePage',
   'portfolio.module.addProject',
   'portfolio.module.myProjects',

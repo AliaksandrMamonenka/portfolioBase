@@ -15,8 +15,12 @@
 				<td>{{project.technologies}}</td>
 				<td>{{project.tools}}</td>
 				<td>
-					<span class="glyphicon glyphicon-trash" ng-click="userProjects.deleteProject(project, $index)"></span>
-					<span class="glyphicon glyphicon-pencil" ng-click="userProjects.editProject(project)"></span>
+					<button type="button" class="btn btn-danger btn-circle" ng-click="userProjects.deleteProject(project, $index)">
+						<span class="glyphicon glyphicon-trash"></span>
+					</button>
+					<button type="button" class="btn btn-warning btn-circle" ng-click="userProjects.editProject(project)">
+						<span class="glyphicon glyphicon-pencil"></span>
+					</button>
 				</td>
 			</tr>
 		</tbody>
