@@ -5,12 +5,20 @@ angular.module('portfolio.module.registration', [])
 		$scope.registration = {};
 		$scope.registration.form = {};
 		$scope.registration.validation = {};
-		
+		$scope.registration.isUserExist = false;
+
 
 		if (!$scope.registration.isValid) {
 
 			$scope.registration.isValid = true;
-		} 
+		}
+
+		$scope.$on('inavildRegistrationData', function (event, data) {
+
+			$scope.registration.isUserExist = true;
+			$scope.registration.userExistMsg = data.message;
+			$scope.registration.form = {}; 
+		});
 
 		$scope.registration.sendForm = function () {
 			if ($scope.registration.form.password === $scope.registration.form.confirmpassword) {

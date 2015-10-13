@@ -5,8 +5,13 @@ angular.module('portfolio.services.registrationService', [])
         return {
             sendData: function (data) {
                 registrationFactory.sendRequest(data).$promise.then(function (responce) {
-                    cookieService.setCookie('userInfo', responce);
-                    $window.location.assign('/');
+                    cookieService.setCookie('userInfo', responce); 
+                    if (!responce.success) {
+                        $rootScope.$broadcast('inavildRegistrationData', responce);
+                    } else {
+                        $window.location.assign('/');
+                    }
+
                 }, function (error) {
                     console.log(error);
                     console.log("ERROR FROM REGISTRATION SERVICE!!!!!");

@@ -16,13 +16,13 @@ module.exports = function (router) {
 
 		User.register(user, req.body.password, function (err, user) {
             if (err) {
-				res.json({ error: err.message });
+				err.success = false;
+				return res.json(err);
             }
+			passport.authenticate('local')(req, res, function () {
+				res.json({ userId: req.user._id, success: true });
+			});
 
-            passport.authenticate('local')(req, res, function () {
-				console.log(req);
-                res.json({ userId: req.user._id });
-            });
         });
 	});
 

@@ -1,6 +1,9 @@
 <div class="row">
 	<div class="col-md-6 col-md-offset-3">
 		<h1>Registration Page</h1>
+		<p class="alert alert-danger" ng-if="registration.isUserExist ">
+			{{registration.userExistMsg}}
+		</p>
 		<form name="registrationForm" class="well">
 			<div class="form-group" ng-class="{ 'has-error' : registrationForm.nickname.$invalid && !registrationForm.nickname.$pristine, 'has-success' : registrationForm.nickname.$valid}">
 				<label>Nickname<span class="text-danger">&#42;</span></label>
