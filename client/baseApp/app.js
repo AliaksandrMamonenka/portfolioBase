@@ -8,7 +8,7 @@ angular.module('baseApp', [
   'ipCookie',
   'ui.bootstrap', 
   
-  //modules
+//modules
   'portfolio.module.homePage',
   'portfolio.module.addProject',
   'portfolio.module.myProjects',
@@ -19,7 +19,7 @@ angular.module('baseApp', [
   'portfolio.module.allUsers',
   'portfolio.module.registration',
   'portfolio.module.authorization',
-  'portfolio.module.editProject',
+  'portfolio.module.editProject', 
   
 //resource
   'portfolio.resources.usersFactory',
@@ -35,7 +35,10 @@ angular.module('baseApp', [
   'portfolio.services.projectsService', 
   
 //directive
-  'portfolio.directives.fileInput'
+  'portfolio.directives.fileInput',
+  
+//components
+  'portfolio.component.modalInstanceCtrl'
 
 
 

@@ -15,7 +15,7 @@
 							<div ng-if="projectDescription.images.length">
 								<uib-carousel no-wrap="projectDescription.slider.noWrapSlides">
 									<uib-slide ng-repeat="slide in projectDescription.images" active="slide.active">
-										<img ng-src="../uploads/images/{{slide.filename}}" style="margin:auto;">
+										<img ng-click="projectDescription.openPopup(slide.filename)" ng-src="../uploads/images/{{slide.filename}}" style="margin:auto;">
 									</uib-slide>
 								</uib-carousel>
 							</div>
@@ -68,3 +68,13 @@
 		<!-- /.panel -->
 	</div>
 </div>
+
+
+<script type="text/ng-template" id="imageView.html"> 
+	<div class="modal-body"> 
+			<img ng-src="../uploads/images/{{data}}" style="width:100%"> 
+	</div>
+	<div class="modal-footer">
+		<button class="btn btn-primary" type="button" ng-click="ok()">OK</button> 
+	</div>
+</script>

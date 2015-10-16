@@ -15,6 +15,7 @@
 				<td>{{project.technologies}}</td>
 				<td>{{project.tools}}</td>
 				<td>
+					<!--ng-click="userProjects.deleteProject(project, $index)"-->
 					<button type="button" class="btn btn-danger btn-circle" ng-click="userProjects.deleteProject(project, $index)">
 						<span class="glyphicon glyphicon-trash"></span>
 					</button>
@@ -25,4 +26,17 @@
 			</tr>
 		</tbody>
 	</table>
-</div>
+</div> 
+
+<script type="text/ng-template" id="confirmationRequest.html">
+	<div class="modal-header">
+		<h3 class="modal-title">Do not be silly!</h3>
+	</div>
+	<div class="modal-body">
+		<p>Are you sure you want to delete <b>{{data}}</b>?</p>
+	</div>
+	<div class="modal-footer">
+		<button class="btn btn-primary" type="button" ng-click="ok()">OK</button>
+		<button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+	</div>
+</script>
