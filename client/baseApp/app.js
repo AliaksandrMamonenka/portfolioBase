@@ -26,24 +26,64 @@ angular.module('baseApp', [
   'portfolio.resources.registrationFactory',
   'portfolio.resources.authorizationFactory',
   'portfolio.resources.projectsFactory',
+  'portfolio.resources.checkAuthorizationFactory',
   
 //service 
   'portfolio.services.usersService',
   'portfolio.services.registrationService',
   'portfolio.services.authorizationService',
   'portfolio.services.cookieService',
-  'portfolio.services.projectsService', 
+  'portfolio.services.projectsService',
+  'portfolio.services.checkAuthorizationService',
   
 //directive
   'portfolio.directives.fileInput',
   
 //components
-  'portfolio.component.modalInstanceCtrl'
+  'portfolio.component.modalInstanceCtrl',
+  
+//filters
+  'portfolio.filters.paginationFilter'
 
 
 
 ])
-  .config(['$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider) {
+  .config(['$routeProvider', '$locationProvider', '$httpProvider', function ($routeProvider, $locationProvider, $httpProvider) { 
+    
+    // Check if the user is connected
+    var checkLoggedin = function ($q, $timeout, $http, $location, $rootScope) {
+      // Initialize a new promise
+      var deferred = $q.defer();
+
+      // Make an AJAX call to check if the user is logged in
+      $http.get('/loggedin').success(function (user) {
+        
+        // Authenticated
+        if (user !== '0') {
+          deferred.resolve();
+          
+          // Not Authenticated 
+        } else {
+          deferred.reject();
+          $location.url('/authorization');
+        }
+      });
+      return deferred.promise;
+    };
+    
+    // Add an interceptor for AJAX errors
+    $httpProvider.interceptors.push(function ($q, $location) {
+      return {
+        response: function (response) {
+          return response;
+        },
+        responseError: function (response) {
+          if (response.status === 401)
+            $location.url('/authorization');
+          return $q.reject(response);
+        }
+      };
+    });
 
     $routeProvider.when('/', {
       templateUrl: 'baseApp/modules/home-page-module/home-page-module.html',
@@ -62,12 +102,18 @@ angular.module('baseApp', [
 
     $routeProvider.when('/addproject', {
       templateUrl: 'baseApp/modules/add-project-module/add-project-module.html',
-      controller: 'AddProjectCtrl'
+      controller: 'AddProjectCtrl',
+      resolve: {
+        loggedin: checkLoggedin
+      }
     });
 
     $routeProvider.when('/myprojects', {
       templateUrl: 'baseApp/modules/my-projects-module/my-projects-module.html',
-      controller: 'MyProjectsModuleCtrl'
+      controller: 'MyProjectsModuleCtrl',
+      resolve: {
+        loggedin: checkLoggedin
+      }
     });
 
     $routeProvider.when('/projectdescription', {
@@ -82,22 +128,34 @@ angular.module('baseApp', [
 
     $routeProvider.when('/editprofail', {
       templateUrl: 'baseApp/modules/edit-profile-module/edit-profile-module.html',
-      controller: 'EditProfileCtrl'
+      controller: 'EditProfileCtrl',
+      resolve: {
+        loggedin: checkLoggedin
+      }
     });
 
     $routeProvider.when('/editproject', {
       templateUrl: 'baseApp/modules/edit-project-module/edit-project-module.html',
-      controller: 'EditProjectCtrl'
+      controller: 'EditProjectCtrl',
+      resolve: {
+        loggedin: checkLoggedin
+      }
     });
 
     $routeProvider.when('/profail', {
       templateUrl: 'baseApp/modules/profile-module/profile-module.html',
-      controller: 'ProfileCtrl'
+      controller: 'ProfileCtrl',
+      resolve: {
+        loggedin: checkLoggedin
+      }
     });
 
     $routeProvider.when('/logout', {
       templateUrl: 'baseApp/modules/logout-module/logout-module.html',
-      controller: 'LogoutCtrl'
+      controller: 'LogoutCtrl',
+      resolve: {
+        loggedin: checkLoggedin
+      }
     });
 
     $routeProvider.otherwise({ redirectTo: '/' });

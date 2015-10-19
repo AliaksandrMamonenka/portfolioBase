@@ -25,6 +25,11 @@ module.exports = function (router) {
 
         });
 	});
+	
+	// test if the user is logged in or not 
+	router.get('/loggedin', function (req, res) {
+		res.send(req.isAuthenticated() ? req.user : '0');
+	});
 
 	router.post('/authorization', passport.authenticate('local'), function (req, res) {
 		// console.log(req.user._id );

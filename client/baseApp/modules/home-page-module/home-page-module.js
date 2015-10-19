@@ -11,9 +11,12 @@ angular.module('portfolio.module.homePage', [])
 			projectsService.setData(data);
 			$window.location.assign('/#/projectdescription');
 		}
-
-		$scope.$on('getAllProjects', function (event, data) {
+		$scope.$on('getAllProjects', function (event, data) { 
 
 			$scope.homePage.allProjects = data;
+
+			$scope.homePage.totalItems = $scope.homePage.allProjects.length;
+			$scope.homePage.itemPerPage = 5;
+			$scope.homePage.currentPage = 1;
 		});
 	}]);
