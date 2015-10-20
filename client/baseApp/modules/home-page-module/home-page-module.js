@@ -12,6 +12,7 @@ angular.module('portfolio.module.homePage', [])
 			projectsService.setData(data);
 			$window.location.assign('/#/projectdescription');
 		}
+		
 		$scope.$on('getAllProjects', function (event, data) {
 
 			$scope.homePage.allProjects = data;
@@ -21,11 +22,10 @@ angular.module('portfolio.module.homePage', [])
 			$scope.homePage.currentPage = 1;
 		});
 		
-		// $watch search to update pagination
-		$scope.$watch('homePage.filtersParams.searchigData', function (newVal, oldVal) { 
-			if (newVal && newVal.length) {  
-				$scope.filtered = filterFilter($scope.homePage.allProjects, newVal);  
-				$scope.homePage.totalItems = $scope.filtered.length; 
+		$scope.$watch('homePage.filtersParams.searchigData', function (newVal, oldVal) {   
+			if (newVal !== oldVal) { 
+				$scope.filtered = filterFilter($scope.homePage.allProjects, newVal);
+				$scope.homePage.totalItems = $scope.filtered.length;
 				$scope.homePage.currentPage = 1;
 			}
 		}, true);
