@@ -25,16 +25,14 @@ angular.module('baseApp', [
   'portfolio.resources.usersFactory',
   'portfolio.resources.registrationFactory',
   'portfolio.resources.authorizationFactory',
-  'portfolio.resources.projectsFactory',
-  'portfolio.resources.checkAuthorizationFactory',
+  'portfolio.resources.projectsFactory', 
   
 //service 
   'portfolio.services.usersService',
   'portfolio.services.registrationService',
   'portfolio.services.authorizationService',
   'portfolio.services.cookieService',
-  'portfolio.services.projectsService',
-  'portfolio.services.checkAuthorizationService',
+  'portfolio.services.projectsService', 
   
 //directive
   'portfolio.directives.fileInput',

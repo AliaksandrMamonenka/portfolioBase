@@ -2,25 +2,30 @@
 	<div class="col-md-12">
 		<uib-accordion close-others="oneAtATime">
 			<uib-accordion-group heading="Filters Panel">
-				<div class="form-group col-md-6">
+				<div class="form-group col-md-4">
 					<label>Search:</label>
-					<input class="form-control" ng-model="homePage.searchigData">
+					<input class="form-control" ng-model="homePage.filtersParams.searchigData">
 				</div>
-				<div class="form-group col-md-6">
+				<div class="form-group col-md-4">
 					<label>Sort by:</label>
-					<select class="form-control">
-						<option>---</option>
-						<option>Name</option>
-						<option>Technologies</option>
-						<option>Tools</option> 
+					<select class="form-control"ng-model="homePage.filtersParams.orderProp"> 
+						<option value="projectname">Name</option>
+						<option value="technologies">Technologies</option> 
+					</select>
+				</div> 
+				<div class="form-group col-md-4">
+					<label>Order by:</label>
+					<select class="form-control" ng-model="homePage.filtersParams.reverse">
+						<option value="">Old first</option>
+						<option value="true">New first</option>
 					</select>
 				</div> 
 			</uib-accordion-group>
 		</uib-accordion>
 	</div>
-
 	<p class="alert alert-info" ng-if="homePage.allProjects.length < 1">There is no projects yet. You can be the first :)</p>
-	<div class="col-md-12" ng-repeat="project in homePage.allProjects | filter:homePage.searchigData | pagination: (homePage.currentPage - 1) * homePage.itemPerPage | limitTo: homePage.itemPerPage">
+	<!--| pagination: (homePage.currentPage - 1) * homePage.itemPerPage | limitTo: homePage.itemPerPage-->
+	<div class="col-md-12" ng-repeat="project in homePage.allProjects | filter:homePage.filtersParams.searchigData | orderBy:homePage.filtersParams.orderProp:homePage.filtersParams.reverse | pagination: (homePage.currentPage - 1) * homePage.itemPerPage | limitTo: homePage.itemPerPage ">
 		<div class="panel panel-default">
 			<div class="panel-heading">{{project.projectname}}</div>
 			<div class="panel-body img-width-cst">
@@ -35,7 +40,7 @@
 			<div class="panel-footer">Technologies: {{project.technologies}} </div>
 		</div>
 	</div>
-	<div ng-show="homePage.allProjects.length > 5" style="text-align: center;" class="pagination-wrapper">
+	<div ng-show="homePage.totalItems > 5" style="text-align: center;" class="pagination-wrapper">
 		<uib-pagination total-items="homePage.totalItems" items-per-page="homePage.itemPerPage" ng-model="homePage.currentPage" class="pagination-sm"></uib-pagination>
 	</div>
 </div>

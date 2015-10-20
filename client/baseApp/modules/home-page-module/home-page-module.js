@@ -1,8 +1,9 @@
 'use strict';
 
 angular.module('portfolio.module.homePage', [])
-	.controller('HomePageCtrl', ['$scope', 'projectsService', '$window', function ($scope, projectsService, $window) {
+	.controller('HomePageCtrl', ['$scope', 'projectsService', '$window', 'filterFilter', function ($scope, projectsService, $window, filterFilter) {
 		$scope.homePage = {};
+		$scope.homePage.filtersParams = {};
 
 		projectsService.getAllProjects();
 
@@ -11,7 +12,7 @@ angular.module('portfolio.module.homePage', [])
 			projectsService.setData(data);
 			$window.location.assign('/#/projectdescription');
 		}
-		$scope.$on('getAllProjects', function (event, data) { 
+		$scope.$on('getAllProjects', function (event, data) {
 
 			$scope.homePage.allProjects = data;
 
@@ -19,4 +20,13 @@ angular.module('portfolio.module.homePage', [])
 			$scope.homePage.itemPerPage = 5;
 			$scope.homePage.currentPage = 1;
 		});
+		
+		// $watch search to update pagination
+		$scope.$watch('homePage.filtersParams.searchigData', function (newVal, oldVal) { 
+			if (newVal && newVal.length) {  
+				$scope.filtered = filterFilter($scope.homePage.allProjects, newVal);  
+				$scope.homePage.totalItems = $scope.filtered.length; 
+				$scope.homePage.currentPage = 1;
+			}
+		}, true);
 	}]);
